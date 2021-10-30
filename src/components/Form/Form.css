@@ -1,0 +1,19 @@
+.sendForm {
+  border-top: 1px solid silver;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+}
+
+.sendBtn {
+  margin: 0 5px;
+  font-size: 20pt;
+}
+
+.textInput {
+  margin: 3px 0;
+  font-size: 13pt;
+  width: 100%;
+  outline: none;
+}

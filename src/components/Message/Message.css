@@ -3,6 +3,30 @@
   justify-content: flex-start;
   margin: 10px;
   padding: 0;
+  position: relative;
+}
+
+.botmsg {
+  justify-content: flex-end;
+}
+
+.msg-head {
+  font-size: 9pt;
+  position: absolute;
+  top: -20px;
+  background-color: white;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.humanmsg-head {
+  border: 1px solid darkgreen;
+  left: 10px;
+}
+
+.botmsg-head {
+  border: 1px solid darkblue;
+  right: 10px;
 }
 
 .msg-text {
@@ -11,4 +35,9 @@
   padding: 12px;
   margin: 0;
   color: black;
+}
+
+.botmsg-text {
+  background-color: steelblue;
+  color: white;
 }
