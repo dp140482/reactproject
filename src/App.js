@@ -16,11 +16,17 @@ const App = () => {
   }
 
   useEffect( () => {
-    if (messageList.length > 0) {
-      if (messageList[messageList.length - 1].author === 'Вы') {
-        const newMsg = {author: 'Бот', text: 'Оператор ответит Вам позже.'};
-        setMessageList([...messageList, newMsg]);
+    const timeout = setTimeout(() => {
+      if (messageList.length > 0) {
+        if (messageList[messageList.length - 1].author === 'Вы') {
+          const newMsg = {author: 'Бот', text: 'Оператор ответит Вам позже.'};
+          setMessageList([...messageList, newMsg]);
+        }
       }
+    }, 1500);
+
+    return () => {
+      clearTimeout(timeout);
     }
   }, [messageList]);
 
