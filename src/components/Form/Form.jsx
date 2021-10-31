@@ -1,4 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
+import { Button, TextField } from "@material-ui/core";
+import { Send } from '@mui/icons-material';
 import './Form.css';
 
 export const Form = (props) => {
@@ -24,8 +26,20 @@ export const Form = (props) => {
 
     return (
         <form onSubmit={handleSubmit} className="sendForm">
-            <input type="text" value={text} onChange={handleChange} className="textInput" ref={formRef} />
-            <button type="submit" className="sendBtn">⇧</button>
+            <TextField 
+                variant="outlined"
+                className="textInput"
+                size="small"
+                sx={{ outline: 'none' }}
+                margin="normal"
+                fullWidth
+                value={text}
+                onChange={handleChange}
+                ref={formRef}
+            />
+            <Button variant="contained" style={{ margin: '17px' }} type="submit" >
+                <Send style={{ color: 'blue' }} />
+            </Button>
         </form>
     );
 }
