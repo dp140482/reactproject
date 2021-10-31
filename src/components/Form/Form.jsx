@@ -1,7 +1,15 @@
 import React, {useState, useEffect, useRef} from "react";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, ThemeProvider, createMuiTheme } from "@material-ui/core";
 import { Send } from '@mui/icons-material';
 import './Form.css';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: "#A9A9A9",
+        }
+    },
+});
 
 export const Form = (props) => {
     const [text, setText] = useState('');
@@ -26,6 +34,7 @@ export const Form = (props) => {
 
     return (
         <form onSubmit={handleSubmit} className="sendForm">
+            <ThemeProvider theme={theme}>
             <TextField 
                 variant="outlined"
                 className="textInput"
@@ -40,6 +49,7 @@ export const Form = (props) => {
             <Button variant="contained" style={{ margin: '17px' }} type="submit" >
                 <Send style={{ color: 'blue' }} />
             </Button>
+            </ThemeProvider>
         </form>
     );
 }
