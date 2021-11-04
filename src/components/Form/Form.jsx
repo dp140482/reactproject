@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useRef} from "react";
-import { Button, TextField, ThemeProvider, createMuiTheme } from "@material-ui/core";
+import React from "react";
+import { Button, TextField, ThemeProvider, createTheme } from "@material-ui/core";
 import { Send } from '@mui/icons-material';
 import './Form.css';
 
-const theme = createMuiTheme({
+const theme = createTheme({
     palette: {
         primary: {
             main: "#A9A9A9",
@@ -12,10 +12,10 @@ const theme = createMuiTheme({
 });
 
 export const Form = (props) => {
-    const [text, setText] = useState('');
-    const formRef = useRef(null);
+    const [text, setText] = React.useState('');
+    const formRef = React.useRef(null);
 
-    useEffect(() => {
+    React.useEffect(() => {
         formRef.current?.scrollIntoView({ behavior: "auto" });
         formRef.current?.focus();
     });
