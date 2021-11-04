@@ -1,8 +1,15 @@
 .app {
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 93vh;
 }
 
 .app-header {
   font-size: 14pt;
   text-align: center;
+}
+
+.app-content {
+  flex-grow: 1;
 }
