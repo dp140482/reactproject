@@ -1,0 +1,4 @@
+.messages {
+  flex-grow: 1;
+  border-left: 1px solid silver;
+}

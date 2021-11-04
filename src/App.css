@@ -1,5 +1,5 @@
 .app {
-  margin: 20px;
+  margin: 10px 30px 10px 20px;
   display: flex;
   flex-direction: column;
   height: 93vh;
@@ -11,5 +11,5 @@
 }
 
 .app-content {
-  flex-grow: 1;
+  display: flex;
 }
