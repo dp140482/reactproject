@@ -1,0 +1,15 @@
+.chats {
+  margin: 10px 30px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 93vh;
+}
+
+.chats-header {
+  font-size: 14pt;
+  text-align: center;
+}
+
+.chats-content {
+  display: flex;
+}
