@@ -12,8 +12,11 @@ const App = () => {
         <Route path="/" element={<Home />}/>
         <Route path="/profile" element={<Profile />}/>
         <Route path="/chats" element={<Chats />}>
-          <Route path=":chatID" />
+          <Route path=":chatID" element={<Chats />}/>
         </Route>
+        <Route path="*" element={
+          <h3 className="nopage">Страница не найдена</h3>
+        } />
       </Routes>
     </BrowserRouter>
   );

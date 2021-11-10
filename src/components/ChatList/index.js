@@ -1,10 +1,9 @@
 import React from "react";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import { v4 as uuid } from 'uuid';
+import { Link, Navigate } from 'react-router-dom';
+import './ChatList.css';
 
-export const ChatList = () => {
+const ChatList = ({ chatID }) => {
     const [chats] = React.useState([{
         name: "Глупый бот",
         id: "FoolBot"
@@ -16,13 +15,20 @@ export const ChatList = () => {
         id: "BoringBot"
       }]);
 
-    return (
-        <List>
-            {
-            chats.map(chat => <ListItem key={ uuid() }>
-                                              <ListItemText primary={chat.name} />
-                                            </ListItem>)
-            }
-        </List>
+  if (!( chatID && chats.find(chat => chat.id === chatID))) {
+    return (<Navigate replace to="/chats/FoolBot" />);
+  }
+
+  return (
+    <ul className="chatList">
+    {
+      chats.map(chat => <li
+        key={ uuid() }
+        className={chat.id === chatID ? "activeChat" : "passiveChat"}
+      ><Link to={chat.id}>{chat.name}</Link></li>)
+    }
+    </ul>
     );
 }
+
+export default ChatList;

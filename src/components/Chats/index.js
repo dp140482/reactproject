@@ -1,9 +1,12 @@
 import React from 'react';
-import { ChatList } from './components/ChatList';
-import { Messages } from './components/Messages';
-import { Form } from './components/Form';
+import { useParams } from 'react-router';
+import ChatList from '../ChatList';
+import { Messages } from '../Messages';
+import { Form } from '../Form';
+import './Chats.css';
 
 const Chats = () => {
+    const { chatID } = useParams();
     const [messageList, setMessageList] = React.useState([]);
   
     const handleFormSendMessage = (text) => {
@@ -28,7 +31,7 @@ const Chats = () => {
       <div className="chats">
         <h1 className="chats-header">Чат</h1>
         <div className="chats-content">
-          <ChatList />
+          <ChatList chatID={chatID} />
           <Messages messageList={ messageList } />
         </div>
         <Form change={handleFormSendMessage} className="chats-footer" />
