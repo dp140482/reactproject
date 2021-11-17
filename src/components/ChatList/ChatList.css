@@ -9,12 +9,29 @@
 
 .chatList {
   list-style-type: none;
-  margin-right: 20px;
   line-height: 200%;
-  min-width: 100px;
 }
-
 .chatList a {
   text-decoration: none;
   color: inherit;
+}
+
+.chatListContainer {
+  margin-right: 20px;
+  padding-bottom: 20px;
+  min-width: 100px;
+}
+
+.deleteBtn {
+  border-radius: 50%;
+  margin-right: 10px;
+  padding: 2px 5px;
+  font-weight: bold;
+  border: 1px solid darkgray;
+  color: dimgray;
+}
+.deleteBtn:hover {
+  border: 1px solid firebrick;
+  color: red;
+  background-color: wheat;
 }
