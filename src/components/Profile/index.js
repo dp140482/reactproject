@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { toggleCheckbox } from "../../store/profile/actions";
-import { selectProfile } from "../../store/chats/selectors";
+import { selectProfile } from "../../store/profile/selectors";
 import './Profile.css';
 
 const Profile = () => {

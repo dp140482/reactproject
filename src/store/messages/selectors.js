@@ -1,0 +1,1 @@
+export const selectMessages = chatID => { return state => state.messages[chatID]; }

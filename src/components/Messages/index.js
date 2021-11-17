@@ -9,4 +9,4 @@ export const Messages = ({messageList}) => {
             {messageList.map(msg => <Message msg={msg} key={ uuid() } />)}
         </div>
     );
-}
+};
