@@ -23,7 +23,7 @@ export const Chats = () => {
     React.useEffect( () => {
       const timeout = setTimeout(() => {
         if ( chatMsgs.length && chatMsgs[chatMsgs.length - 1].author === authors.human ) {
-          const newMsg = {author: authors.bot, text: botMessage[chatID] };
+          const newMsg = { author: authors.bot, text: botMessage[chatID] };
           dispatch(addMessage(chatID, newMsg));
         }
       }, 1500);
