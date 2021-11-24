@@ -40,5 +40,5 @@ const addState = chatID => {
 export const initChatsState = {
     FoolBot: addState('FoolBot'),
     AngryBot: addState('AngryBot'),
-    BoringBot: addState('BoringBot'),
+    BoringBot: addState('BoringBot')
 }

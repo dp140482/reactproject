@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from "react-redux";
 import Home from './components/Home';
 import Profile from './components/Profile';
-import Chats from './components/Chats';
+import { Chats } from './components/Chats';
 import { store } from "./store";
 import './App.css';
 
