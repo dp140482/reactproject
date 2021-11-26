@@ -12,6 +12,11 @@ import './ChatList.css';
 
 const ChatList = ({ chatID }) => {
   const chats = useSelector(selectChats);
+
+  const chatsIncludes = React.useCallback( chat => {
+    return chats.map(chatInList => chat.id === chatInList.id).reduce((a, b) => a || b, false);
+  }, [chats]);
+
   const dispatch = useDispatch();
   const [newChatName, setNewChatName] = React.useState('');
 
@@ -22,7 +27,10 @@ const ChatList = ({ chatID }) => {
   }, [dispatch, newChatName]);
 
   React.useEffect(() => {
-    initChats.map(chat => dispatch(addChat(chat)));
+    console.log(chats);
+    initChats.forEach(chat => {
+      if (!chatsIncludes(chat)) dispatch(addChat(chat));
+    });
   }, []);
 
   React.useEffect(() => {
