@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from 'uuid';
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from 'react-router-dom';
 import { initChats } from "../../utils/constants";
 import { addChat } from "../../store/chats/actions";
 import { selectChats } from "../../store/chats/selectors";
-import ChatItem from '../ChatItem';
+import ChatListPresenter from "../ChatListPresenter";
+import AddChatForm from "../AddChatForm";
 import './ChatList.css';
 
 const ChatList = ({ chatID }) => {
@@ -32,24 +33,12 @@ const ChatList = ({ chatID }) => {
 
   return (
     <div className="chatListContainer">
-      <ul className="chatList">
-      {
-        chats.map(chat => <ChatItem 
-          key={ uuid() }
-          chat={chat}
-          chatClass={chat.id === chatID ? "activeChat" : "passiveChat"} 
-          /> )
-      }
-      </ul>
-      <form onSubmit={handleAddChat}>
-        <input
-          type="text"
-          value={newChatName}
-          onChange={event=>setNewChatName(event.target.value)}
-          className="chatInput"
-        />
-        <input type="submit" value="+"/>
-      </form>
+      <ChatListPresenter chats={chats} chatID={chatID} />
+      <AddChatForm 
+        handleAddChat={handleAddChat}
+        newChatName={newChatName}
+        setNewChatName={setNewChatName}
+      />
     </div>
     );
 }
