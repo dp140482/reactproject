@@ -5,8 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import ChatList from '../ChatList';
 import { Messages } from '../Messages';
 import { Form } from '../Form';
-import { authors, botMessage } from '../../utils/constants';
-import { addMessage } from "../../store/messages/actions";
+import { addMessageWithThunk } from "../../store/messages/actions";
 import { selectMessages } from "../../store/messages/selectors";
 import './Chats.css';
 
@@ -17,21 +16,8 @@ export const Chats = () => {
   
     const handleFormSendMessage = React.useCallback( (text) => {
       const newMsg = {author: 'Вы', text: text};
-      dispatch(addMessage(chatID, newMsg));
-    }, [chatID]);
-  
-    React.useEffect( () => {
-      const timeout = setTimeout(() => {
-        if ( chatMsgs.length && chatMsgs[chatMsgs.length - 1].author === authors.human ) {
-          const newMsg = { author: authors.bot, text: botMessage[chatID] };
-          dispatch(addMessage(chatID, newMsg));
-        }
-      }, 1500);
-  
-      return () => {
-        clearTimeout(timeout);
-      }
-    }, [chatID, chatMsgs]);
+      dispatch(addMessageWithThunk(newMsg, chatID));
+    }, [chatID, dispatch]);
   
     return (
       <div className="chats">

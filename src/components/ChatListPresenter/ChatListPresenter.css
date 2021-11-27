@@ -1,0 +1,18 @@
+.chatList {
+  list-style-type: none;
+  padding: 0;
+  line-height: 200%;
+}
+.chatList a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.activeChat {
+  color: red;
+  font-weight: bold;
+}
+
+.passiveChat {
+  color: black;
+}
