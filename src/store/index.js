@@ -6,19 +6,21 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage
 import { profileReducer } from "./profile/reducer";
 import { chatsReducer } from "./chats/reducer";
 import { messagesReducer } from "./messages/reducer";
+import { NODReducer } from "./number/reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ["profile"]
+  blacklist: ["profile", "nod"]
 };
 
 const rootReducer = combineReducers({
   chats: chatsReducer,
   profile: profileReducer,
-  messages: messagesReducer
+  messages: messagesReducer,
+  nod: NODReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

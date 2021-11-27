@@ -7,6 +7,7 @@ const Home = () => {
         <div className="links-container">
             <Link to="/chats">Чаты</Link>
             <Link to="/profile">Профиль</Link>
+            <Link to="/number">Число дня</Link>
         </div>
     );
   }

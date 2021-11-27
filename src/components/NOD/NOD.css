@@ -1,0 +1,56 @@
+.NODpage {
+  margin: 20px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13pt;
+}
+.NODpage h1 {
+  text-align: center;
+}
+
+.theNumber {
+  color: firebrick;
+}
+
+.centered {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.sys {
+  font-weight: bold;
+  letter-spacing: 1.5pt;
+}
+
+.copyright {
+  color: dimgray;
+}
+
+.error {
+  background-color: mistyrose;
+  color: red;
+  font-weight: bold;
+  border: 2px solid firebrick;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
+}
+
+.errorButton {
+  background-color: silver;
+  border: 2px solid firebrick;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+.errorButton:hover {
+  background-color: red;
+  color: yellow;
+  border: 2px solid silver;
+  cursor: pointer;
+}
