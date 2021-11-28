@@ -1,15 +1,24 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { signIn } from "../../store/profile/actions";
+import { logIn } from "../../services/firebase";
+import SignForm from "../SignForm";
 import './Home.css';
 
 const Home = () => {
-    const dispatch = useDispatch();
+    const [error, setError] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
 
-    const handleClick = () => {
-        dispatch(signIn());
-    };
+    const handleSignIn = async (email, pass) => {
+        setLoading(true);
+        try {
+          await logIn(email, pass);
+        } catch (err) {
+          console.log(err);
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
 
     return (
         <>
@@ -19,7 +28,8 @@ const Home = () => {
             <Link to="/number">Число дня</Link>
         </div>
         <div className="links-container">
-            <button onClick={handleClick}>SIGN IN</button>
+            <SignForm onSubmit={handleSignIn} error={error} loading={loading} />
+            <Link to="/signup">Sign Up</Link>
         </div>
         </>
     );

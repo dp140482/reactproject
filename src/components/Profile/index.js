@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { toggleCheckbox, signOut } from "../../store/profile/actions";
+import { toggleCheckbox } from "../../store/profile/actions";
 import { selectProfile } from "../../store/profile/selectors";
+import { logOut } from "../../services/firebase";
 import './Profile.css';
 
 const Profile = () => {
@@ -12,9 +13,13 @@ const Profile = () => {
         dispatch(toggleCheckbox);
     };
 
-    const handleSignOut = () => {
-        dispatch(signOut());
-    }
+    const handleSignOut = async () => {
+        try {
+            await logOut();
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <div className="profile">
