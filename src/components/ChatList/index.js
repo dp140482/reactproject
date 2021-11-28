@@ -8,6 +8,7 @@ import { addChat } from "../../store/chats/actions";
 import { selectChats } from "../../store/chats/selectors";
 import ChatListPresenter from "../ChatListPresenter";
 import AddChatForm from "../AddChatForm";
+// import { onValue, set } from "firebase/database";
 import './ChatList.css';
 
 const ChatList = ({ chatID }) => {
@@ -27,7 +28,6 @@ const ChatList = ({ chatID }) => {
   }, [dispatch, newChatName]);
 
   React.useEffect(() => {
-    console.log(chats);
     initChats.forEach(chat => {
       if (!chatsIncludes(chat)) dispatch(addChat(chat));
     });
