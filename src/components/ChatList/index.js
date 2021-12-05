@@ -1,35 +1,40 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { v4 as uuid } from 'uuid';
-import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from 'react-router-dom';
-import { initChats } from "../../utils/constants";
-import { addChat } from "../../store/chats/actions";
-import { selectChats } from "../../store/chats/selectors";
+import { initChats, initChatsState } from "../../utils/constants";
 import ChatListPresenter from "../ChatListPresenter";
 import AddChatForm from "../AddChatForm";
-// import { onValue, set } from "firebase/database";
+import { onValue, set } from "firebase/database";
+import { chatsRef, getChatRefById, getChatMsgsRefById } from "../../services/firebase";
 import './ChatList.css';
 
 const ChatList = ({ chatID }) => {
-  const chats = useSelector(selectChats);
+  const [chats, setChats] = React.useState([]);
 
-  const chatsIncludes = React.useCallback( chat => {
-    return chats.map(chatInList => chat.id === chatInList.id).reduce((a, b) => a || b, false);
-  }, [chats]);
-
-  const dispatch = useDispatch();
+  React.useEffect(() => {
+    onValue(chatsRef, (chatsSnap) => {
+      const newChats = [];
+      chatsSnap.forEach((snapshot) => {
+        newChats.push(snapshot.val());
+      });
+      setChats(newChats);
+    });
+  }, []);
   const [newChatName, setNewChatName] = React.useState('');
 
   const handleAddChat = React.useCallback( event => {
     event.preventDefault();
-    dispatch(addChat({name: newChatName.substr(0, 12), id: uuid()}));
+    const chatID = uuid();
+    set(getChatRefById(chatID), {id: chatID, name: newChatName.substr(0, 12)});
     setNewChatName('');
-  }, [dispatch, newChatName]);
+    console.log(chats);
+  }, [newChatName]);
 
   React.useEffect(() => {
     initChats.forEach(chat => {
-      if (!chatsIncludes(chat)) dispatch(addChat(chat));
+      set(getChatRefById(chat.id), {id: chat.id, name: chat.name});
+      set(getChatMsgsRefById(chat.id), initChatsState[chat.id]);
     });
   }, []);
 
@@ -48,7 +53,7 @@ const ChatList = ({ chatID }) => {
         setNewChatName={setNewChatName}
       />
     </div>
-    );
+  );
 }
 
 export default ChatList;
