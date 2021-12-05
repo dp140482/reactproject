@@ -1,0 +1,21 @@
+@keyframes anim {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinnerBox {
+  box-sizing: border-box !important;
+  position: absolute;
+  width: 144px;
+  height: 144px;
+  top: 28px;
+  left: 28px;
+  border-radius: 50%;
+  border: 16px solid #000;
+  border-color: #0066ff transparent #0066ff transparent;
+  animation: anim 1.25s linear infinite;
+}

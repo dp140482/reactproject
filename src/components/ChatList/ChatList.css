@@ -1,28 +1,5 @@
-.activeChat {
-  color: red;
-  font-weight: bold;
-}
-
-.passiveChat {
-  color: black;
-}
-
-.chatList {
-  list-style-type: none;
-  padding: 0;
-  line-height: 200%;
-}
-.chatList a {
-  text-decoration: none;
-  color: inherit;
-}
-
 .chatListContainer {
   margin-right: 20px;
   padding-bottom: 20px;
   min-width: 135px;
-}
-
-.chatInput {
-  width: 100px;
 }
