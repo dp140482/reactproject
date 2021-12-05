@@ -1,6 +1,6 @@
 import { TOGGLE_CHECKBOX, SIGN_IN, SIGN_OUT } from "./actions";
 
-const initialState = {
+export const initialState = {
   checkbox: false,
   name: "Имя по умолчанию",
   authed: false
