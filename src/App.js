@@ -1,27 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from "react-redux";
-import Home from './components/Home';
-import Profile from './components/Profile';
-import { Chats } from './components/Chats';
-import { store } from "./store";
-import './App.css';
+import { PersistGate } from "redux-persist/integration/react";
+import { CircularProgress } from "@mui/material";
+import { store, persistor } from "./store";
+import Router from "./components/Router";
 
 const App = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/profile" element={<Profile />}/>
-          <Route path="/chats" element={<Chats />}>
-            <Route path=":chatID" element={<Chats />}/>
-          </Route>
-          <Route path="*" element={
-            <h3 className="nopage">Страница не найдена</h3>
-          } />
-        </Routes>
-      </BrowserRouter>
+      <PersistGate loading={<CircularProgress />} persistor={persistor}>
+        <Router />
+      </PersistGate>
     </Provider>
   );
 }
